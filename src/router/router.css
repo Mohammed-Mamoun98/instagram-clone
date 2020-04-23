@@ -1,0 +1,17 @@
+.wrapper {
+  min-height: 100vh;
+  background-color: #fafafa;
+  display: flex;
+  justify-content: center;
+}
+
+.insta {
+  font-family: "Pacifico", cursive;
+  font-size: 2.5rem;
+}
+
+.main-font {
+  font-family: "Manrope", sans-serif;
+  /* font-family: "Oxygen", sans-serif; */
+  font-weight: bolder;
+}
