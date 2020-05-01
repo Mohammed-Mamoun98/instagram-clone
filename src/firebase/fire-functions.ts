@@ -1,7 +1,8 @@
-import { Post } from "./../models/post";
+import { Post, PostsResponse, Doc } from "./../models/post";
 import firebaseConfig from "./config";
 import firebase from "firebase";
 import "firebase/auth";
+import { User, Credintials } from "../models/user";
 
 class Fire {
   constructor() {
@@ -20,6 +21,37 @@ class Fire {
     return Date.now();
   }
 
+  signUp(email: string, password: string) {
+    return new Promise((resolve, reject) => {
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then((ref) => {
+          resolve(ref);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
+
+  addUser(user: Credintials) {
+    return new Promise((resolve, reject) => {
+      firebase
+        .firestore()
+        .collection("users")
+        .add({
+          ...user,
+        })
+        .then((ref) => {
+          resolve(ref);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
+
   addPost = async (post: Post) => {
     const { uid, timestamp } = this;
     const { title } = post;
@@ -28,12 +60,33 @@ class Fire {
         .firestore()
         .collection("posts")
         .add({
-          uid: "8Yl1ZKQUSFNEZOI2gcTKfA6DwkB2",
+          uid,
           timestamp,
           title,
         })
         .then((ref) => {
           resolve(ref);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  };
+
+  getUsers = async () => {
+    return new Promise((resolve, reject) => {
+      firebase
+        .firestore()
+        .collection("posts")
+        .get()
+        .then((snapshot: any) => {
+          let arr: Post[] = [];
+          snapshot.forEach((doc: Doc) => {
+            arr.push(doc.data());
+            // console.log(doc.id, "=>", doc.data());
+          });
+
+          resolve(arr);
         })
         .catch((err) => {
           reject(err);

@@ -1,11 +1,14 @@
 import React from "react";
 import "./App.css";
 import Router from "./router";
+import { SnackbarProvider } from "notistack";
 
 function App() {
   return (
     <div>
-      <Router />
+      <SnackbarProvider maxSnack={3}>
+        <Router />
+      </SnackbarProvider>
     </div>
   );
 }

@@ -28,10 +28,9 @@ const Login = () => (
   <div className="login">
     <Card>
       <HeaderTitle />
-      <MainBtn title="Sign In With Google" />
+      <MainBtn title="Sign In With Google" onClick={() => {}} />
       <OR />
       <Form />
-      <MainBtn title="Sign Up" disabled />
       <FooterTxt />
     </Card>
   </div>

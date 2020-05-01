@@ -1,6 +1,15 @@
 import React from "react";
-import { TextField, makeStyles } from "@material-ui/core";
+import { TextField, makeStyles, TextFieldProps } from "@material-ui/core";
 import { theme } from "../../utils/theme";
+
+interface Input {
+  variant?: string;
+  fullWidth?: boolean;
+  onChange: (e: any) => void;
+  InputProps?: any;
+  style?: React.CSSProperties;
+  className?: any;
+}
 
 const useStyles = makeStyles({
   underline: {
@@ -17,7 +26,7 @@ const useStyles = makeStyles({
   },
 });
 
-const Input = (props: any) => {
+const Input = (props: TextFieldProps) => {
   const classes = useStyles();
   const { input } = theme;
   return (
@@ -27,8 +36,7 @@ const Input = (props: any) => {
         variant="filled"
         fullWidth
         InputProps={{ classes }}
-        className={input}
-        style={{ width: "100%", backgroundColor: "#FAFAFA" }}
+        style={{ width: "100%", backgroundColor: "#FAFAFA", ...input }}
       />
     </div>
   );

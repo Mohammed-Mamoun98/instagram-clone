@@ -2,6 +2,7 @@ export const theme = {
   input: {
     backgroundColor: "#fafafa",
     color: "gray",
-    height: 100,
+    height: 50,
+    marginTop: "1rem",
   },
 };

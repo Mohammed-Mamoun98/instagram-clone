@@ -13,14 +13,17 @@
     "@types/react-dom": "^16.9.0",
     "@types/react-redux": "^7.1.7",
     "@types/react-router-dom": "^5.1.4",
+    "@types/validator": "^13.0.0",
     "firebase": "^7.14.1",
     "firebase-admin": "^8.10.0",
+    "notistack": "^0.9.11",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "redux": "^4.0.5",
-    "typescript": "~3.7.2"
+    "typescript": "~3.7.2",
+    "validator": "^13.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
