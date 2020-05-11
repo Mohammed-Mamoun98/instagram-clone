@@ -2,13 +2,17 @@ import React from "react";
 import "./App.css";
 import Router from "./router";
 import { SnackbarProvider } from "notistack";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 function App() {
   return (
     <div>
-      <SnackbarProvider maxSnack={3}>
-        <Router />
-      </SnackbarProvider>
+      <Provider store={store}>
+        <SnackbarProvider maxSnack={3}>
+          <Router />
+        </SnackbarProvider>
+      </Provider>
     </div>
   );
 }

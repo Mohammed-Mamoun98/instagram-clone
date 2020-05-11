@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes } from "react";
+import React, { InputHTMLAttributes, useEffect } from "react";
 import Card from "../../components/card/card";
 import "./login.css";
 import Form from "./form";
@@ -6,6 +6,8 @@ import MainBtn from "../../components/main-btn/main-btn";
 import Logo from "../../components/logo/logo";
 import DownCard from "../../components/down-card/down-card";
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setAppLoading } from "../../redux/actions/shared";
 
 const OR = () => (
   <div className="or">
@@ -28,7 +30,13 @@ const FooterTxt = () => (
 );
 
 const Login = () => {
+  const dispatch = useDispatch();
   const history = useHistory();
+  useEffect(() => {
+    console.log("did mount");
+
+    debugger;
+  }, []);
   return (
     <div className="login">
       <Card onClick={() => {}}>
