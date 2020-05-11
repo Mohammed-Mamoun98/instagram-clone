@@ -1,11 +1,13 @@
 import React from "react";
 import { StringDecoder } from "string_decoder";
+import { CircularProgress } from "@material-ui/core";
 
 interface IBtn {
   title: string;
   disabled?: boolean;
   onClick: (e: any) => void;
   style?: React.CSSProperties;
+  loading?: boolean;
 }
 const MainBtn = (props: IBtn) => {
   const className = props.disabled
@@ -17,7 +19,11 @@ const MainBtn = (props: IBtn) => {
       style={{ ...props.style }}
       onClick={(e) => props.onClick(e)}
     >
-      {props.title}
+      {!props.loading && <> {props.title}</>}
+
+      {props.loading && (
+        <CircularProgress size={15} style={{ color: "#fff" }} />
+      )}
     </div>
   );
 };

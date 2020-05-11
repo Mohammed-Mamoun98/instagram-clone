@@ -35,6 +35,20 @@ class Fire {
     });
   }
 
+  signIn(email: string, password: string) {
+    return new Promise((resolve, reject) => {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password)
+        .then((ref) => {
+          resolve(ref);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
+
   addUser(user: Credintials) {
     return new Promise((resolve, reject) => {
       firebase

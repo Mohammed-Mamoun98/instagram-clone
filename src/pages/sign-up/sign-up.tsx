@@ -1,11 +1,10 @@
 import React, { InputHTMLAttributes } from "react";
 import Card from "../../components/card/card";
-import "./login.css";
-import Form from "./form";
+import "../login/login.css";
 import MainBtn from "../../components/main-btn/main-btn";
-import Logo from "../../components/logo/logo";
-import DownCard from "../../components/down-card/down-card";
+import Form from "./form";
 import { useHistory } from "react-router-dom";
+import DownCard from "../../components/down-card/down-card";
 
 const OR = () => (
   <div className="or">
@@ -27,26 +26,25 @@ const FooterTxt = () => (
   </div>
 );
 
-const Login = () => {
+const SignUp = () => {
   const history = useHistory();
   return (
     <div className="login">
       <Card onClick={() => {}}>
-        <Logo />
         <HeaderTitle />
         <MainBtn title="Sign In With Google" onClick={() => {}} />
         <OR />
         <Form />
+        <FooterTxt />
       </Card>
-
       <DownCard
-        title="Have no Account, sign up!"
+        title="Have an Account, sign in!"
         onClick={() => {
-          history.push("/signUp");
+          history.push("/login");
         }}
       />
     </div>
   );
 };
 
-export default Login;
+export default SignUp;

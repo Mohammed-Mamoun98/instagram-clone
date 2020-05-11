@@ -10,8 +10,8 @@
   text-align: center;
 }
 .login {
-  min-width: 30vw;
-  margin-top: 2rem;
+  /* min-width: 30vw; */
+  margin-top: 1rem;
 }
 
 .btn {
@@ -32,7 +32,7 @@
   max-height: 0.8rem;
   min-height: 0.1rem;
   background-color: rgba(128, 128, 128, 0.394);
-  min-width: 7rem;
+  min-width: 30%;
 }
 
 .or-text {
