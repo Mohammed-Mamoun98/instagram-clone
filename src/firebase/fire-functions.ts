@@ -21,6 +21,12 @@ class Fire {
     return Date.now();
   }
 
+  getCurrentUser() {
+    return new Promise((resolve, reject) => {
+      firebase.auth().onAuthStateChanged((user) => resolve(user));
+    });
+  }
+
   signUp(email: string, password: string) {
     return new Promise((resolve, reject) => {
       firebase

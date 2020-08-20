@@ -7,7 +7,19 @@ import Logo from "../../components/logo/logo";
 import DownCard from "../../components/down-card/down-card";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setAppLoading } from "../../redux/actions/shared";
+import { setAppLoading, setCounter } from "../../redux/actions/shared";
+import fire from "../../firebase/fire-functions";
+import { useStore } from "../../hooks/useStore";
+
+const Counter = () => {
+  const { counter } = useStore().shared;
+  const dispatch = useDispatch();
+  // const newCounter = counter++;
+  React.useEffect(() => {
+    alert("render");
+  }, []);
+  return <>{counter}</>;
+};
 
 const OR = () => (
   <div className="or">
@@ -23,20 +35,23 @@ const HeaderTitle = () => (
   </div>
 );
 
-const FooterTxt = () => (
-  <div className="header-title main-font footer-txt">
-    By signing up, you agree to our Terms , Data Policy and Cookies Policy .{" "}
-  </div>
-);
-
 const Login = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  useEffect(() => {
-    console.log("did mount");
+  const [show, setShow] = React.useState(false);
+  const { counter } = useStore().shared;
 
-    debugger;
-  }, []);
+  // React.useEffect(() => {
+  //   // console.log("render");
+  //   // alert("render");
+  //   return () => {
+  //     dispatch(setCounter(5));
+  //   };
+  // }, []);
+
+  React.useEffect(() => {
+    fire.getCurrentUser().then((res) => console.log("res", res));
+  });
   return (
     <div className="login">
       <Card onClick={() => {}}>
@@ -46,7 +61,25 @@ const Login = () => {
         <OR />
         <Form />
       </Card>
-
+      <button
+        onClick={() => {
+          setShow(!show);
+        }}
+      >
+        toggle
+      </button>
+      {show && (
+        <div className="">
+          <Counter />
+        </div>
+      )}
+      <button
+        onClick={() => {
+          dispatch(setCounter(5));
+        }}
+      >
+        +
+      </button>
       <DownCard
         title="Have no Account, sign up!"
         onClick={() => {
